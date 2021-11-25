@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="static/main.css"> 
+</head>
+<body>
+    <script>
+        function func1()
+        {
+            var flaskData = JSON.parse('{{result | tojson | safe}}');
+            var flast = document.getElementById("lastname").value;
+            var ffirst = document.getElementById("firstname").value;
+            var fuser = document.getElementById("username").value;
+            var fpass1 = document.getElementById("pass1").value;
+            var fpass2 = document.getElementById("pass2").value;
+
+            if(flast ==""||ffirst==""||fuser==""||fpass1==""||fpass2==""||fpass1!=fpass2||fpass1.length<6||fuser.length<6)
+            {
+                if(flast=="")
+                    // document.getElementById("spanlast").innerHTML="**Empty Field";
+                    alert("LastName Field Empty");
+                else if(ffirst=="")
+                    alert("FirstName Field Empty");
+                else if(fuser=="")
+                    alert("UserName Field Empty");
+                else if(fuser.length < 6)
+                    alert("Username Length must be at least 6 Characters long");
+                else if(fpass1=="")
+                    alert("Password Field Empty");
+                else if(fpass2=="")
+                    alert("Confirmation Field Empty");
+                else if(fpass1.length < 6)
+                    alert("Password Length must be at least 6 Characters long");
+                else if(fpass1!=fpass2)
+                    alert("Password Don't Match");
+                
+                return false;
+            }
+            for(var i = 0;i<flaskData.length;i++)
+            {
+                if(flaskData[i][2] == fuser)
+                {
+                    alert("Username already taken. Please pick a different Username")
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+    <h1 class="maintitle">Welcome to Registration</h1>
+    <div class="registration-box"><br>
+        <p style="font-size: large;">Registration</p><br>
+        <form onsubmit="return func1()" action = "/register.html" method="POST">
+            <p>LastName</p>
+            <input id = "lastname" name = "lastname" type="text"><span id="spanlast"></span><br><br>
+            <p>FirstName</p>
+            <input id = "firstname" name = "firstname" type="text"><span id="spanfirst"></span><br><br>
+            <p>UserName</p><p>(Note: Min Length = 6 Char)</p>
+            <input id = "username" name = "username" type="text"><span id="spanuser"></span><br><br>
+            <p>Password</p><p>(Note: Min Length = 6 Char)</p>
+            <input id = "pass1" name = "password" type="text"><span id="spanpass1"></span><br><br>
+            <p>Confirm Password</p>
+            <input id ="pass2" type="text"><span id="spanpass2"></span><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

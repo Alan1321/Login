@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="static/main.css"> 
+</head>
+<body>
+    <script>
+        function func2()
+        {
+            var flaskData = JSON.parse('{{result | tojson | safe}}'); 
+            var user_name = document.getElementById("indexusername").value;
+            var password = document.getElementById("indexpassword").value;
+
+            for(var i = 0;i<flaskData.length;i++)
+            {
+                if(flaskData[i][2] == user_name&&flaskData[i][3] == password)
+                    return true;
+            }
+            
+            alert("Password/Username don't match. Please register to Login")
+            return false;
+        }
+    </script>
+    <h1 class="maintitle">Welcome to Login</h1>
+    <div class="login-box"><br>
+        <p>Login</p><br>
+        <img src="static/portal.jpg" alt=""><br><br>
+        <form onsubmit = "return func2()" action="/" method="POST">
+            <p>Username</p>
+            <input type="text" id="indexusername" name="indexusername"><br><br>
+            <p>Password</p>
+            <input type="password" id="indexpassword" name="indexpassword"><br><br>
+            <input type="submit" value="Submit"><br><br>
+        </form>
+        <a href="register.html">Register</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: fantasy;
+}
+.maintitle{
+    color:chartreuse;
+    font-size: 50px;
+    margin-top: 2%;
+    text-align: center;
+}
+body{
+    background-image: url("sao.jpg");
+    height: 60%;
+    background-size: cover;
+}
+img{
+    width:50%;
+    height:auto;
+    border-radius: 50%;
+}
+.login-box{
+    width: 320px;
+    height: 420px;
+    background:black;
+    color:yellow;
+    background: rgba(0, 0, 0, 0.5);
+    top:1%;
+    left:50%;
+    font-size: 20px;
+    position: absolute;
+    transform: translate(-50%,50%);
+    box-sizing: border-box;
+    text-align: center;
+}
+.registration-box{
+    font-size: 15px;
+    width: 320px;
+    height: 420px;
+    background:black;
+    color:yellow;
+    background: rgba(0, 0, 0, 0.5);
+    top:1%;
+    left:50%;
+    position: absolute;
+    transform: translate(-50%,50%);
+    box-sizing: border-box;
+    text-align: center;
+}
+.registration-box.p{
+    font-size: 3px;
+}
+
+
